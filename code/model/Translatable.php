@@ -1212,7 +1212,7 @@ class Translatable extends DataExtension implements PermissionProvider {
 				if(in_array($dataField->getName(), $translatableFieldNames)) {
 					// if the field is translatable, perform transformation
 					$fields->replaceField($dataField->getName(), $transformation->transformFormField($dataField));
-				} elseif(!$dataField->isReadonly()) {
+				} elseif($dataField->isReadonly()) {
 					// else field shouldn't be editable in translation-mode, make readonly
 					$fields->replaceField($dataField->getName(), $dataField->performReadonlyTransformation());
 				}
